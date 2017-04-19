@@ -1,0 +1,402 @@
+<!DOCTYPE html> 
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <title>Dokumentace - EKnihovna</title>
+    </head>
+    <body>
+        <nav>
+            <h3>Navigace:</h3>
+            <ul>
+                <li><a href="#uvod">Úvod</a></li>
+                <li><a href="#metodika">Metodika - Použité nástroje</a></li>
+                <li><a href="#elementy">Popis elementů </a></li>
+                <li><a href="#atributy">Popis atributů</a></li>
+                <li><a href="#transformace">Popis transformace</a></li>
+                <li><a href="#zaver">Závěr</a></li>
+            </ul>
+        </nav>
+        <main>
+            <section id="uvod">
+                <article>
+                    <header>
+                        <h2>Úvod</h2>
+                    </header>
+                    <p>
+                        Jako téma semestrálního projektu jsem si vybral xml pro s nastavením serveru pro fiktiví počítačovou hru
+                    </p>
+                    <p>XML soubor slouží k obecné konfiguraci serveru, také se v něm shromaždují informace o score připojených hráčů a informace o jejich nastavení hry aby se předešlo podvodům s upravou nastavení.</p>
+                </article>
+            </section>
+            <section id="metodika">
+                <article>
+                    <header>
+                        <h2>Metodika</h2>
+                    </header>
+                    <h3>Využité programy</h3>
+                    <p>
+                        Pro tvorbu tohoto projektu jsem použil programy <a href="https://code.visualstudio.com/">Visual Studio Code</a> a prohlížeč <a href="https://www.google.com/chrome/">Google Chrome</a>.
+                    </p>
+                    <h3>Využité webové stránky</h3>
+                    <p>
+                        Většinu informací jsem zjískal na stránkách <a href="https://www.w3schools.com/">W3Schools</a>, všechny validace spojené s xml jsem použil stránky <a href="http://www.utilities-online.info">utilities-online.info</a>, konkrétně pro <a href="http://www.utilities-online.info/xsdvalidation/">xml a xsd</a> a <a href="http://www.utilities-online.info/xsltransformation">pro xslt</a> a pro html jsem použil <a href="https://validator.w3.org/">oficální w3 schools validátor</a>
+                    </p>
+                </article>
+            </section>
+            <section>
+                <article>
+                    <header>
+                        <h2>Popis elementů a atributů</h2>
+                    </header>
+                    <h3>Použité elementy</h3>
+                    <table border="1" id="elementy" title="Tabulka elementů">
+                        <tr>
+                            <th>Název elementu</th>
+                            <th>Popis elementu</th>
+                            <th>Schématické omezení</th>
+                        </tr>
+                        <tr>
+                            <td>config</td>
+                            <td>Obaluje obecné nastavení</td>
+                            <td>Bez omezení (obal)</td>
+                        </tr>
+                        <tr>
+                            <td>gameServer</td>
+                            <td>Obaluje nastavení serveru a informace o hráčích</td>
+                            <td>Bez omezení (obal)</td>
+                        </tr>
+                        <tr>
+                            <td>serverSettings</td>
+                            <td>Obaluje nastavení serveru</td>
+                            <td>Bez omezení (obal)</td>
+                        </tr>
+                        <tr>
+                            <td>generalSeverSettings</td>
+                            <td>Obaluje obecné nastavení serveru</td>
+                            <td>Bez omezení (obal)</td>
+                        </tr>
+                        <tr>
+                            <td>hostname</td>
+                            <td>hostname serveru</td>
+                            <td>string</td>
+                        </tr>
+                        <tr>
+                            <td>port</td>
+                            <td>port serveru</td>
+                            <td>integer 1024-65535</td>
+                        </tr>
+                        <tr>
+                            <td>name</td>
+                            <td>jmeno serveru které se zobrazí hráčům</td>
+                            <td>string</td>
+                        </tr>
+                        <tr>
+                            <td>MOTDFile</td>
+                            <td>Nastavení MOTD které se zobrazíhráčům po připojení</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>serverRegion</td>
+                            <td>Region pro který je server určen</td>
+                            <td>World;US;Europe;Asia</td>
+                        </tr>
+                        <tr>
+                            <td>maxplayers</td>
+                            <td>Maximální počet hráčů na serveru</td>
+                            <td>0-64</td>
+                        </tr>
+                        <tr>
+                            <td>mapcycle</td>
+                            <td>Název mappoolu,z kterého budou automaticky rotovat mapy</td>
+                            <td>sting</td>
+                        </tr>
+                        <tr>
+                            <td>maxAllowedPing</td>
+                            <td>Maximální povolený ping pro hráče, kteří se chtějí připojit</td>
+                            <td>integer</td>
+                        </tr>
+                        <tr>
+                            <td>botSettings</td>
+                            <td>Obaluje nastavení počítačem řízených hráčů na serveru</td>
+                            <td>Bez omezení (obal)</td>
+                        </tr>
+                        <tr>
+                            <td>botDifficulty</td>
+                            <td>Nastavení obtížnosti počítačem řízených hráčů</td>
+                            <td>0-3</td>
+                        </tr>
+                        <tr>
+                            <td>securityForcesBotsCount</td>
+                            <td>Počet počítačem řízených hráčů v týmu Security Forces</td>
+                            <td>0-16</td>
+                        </tr>
+                        <tr>
+                            <td>insurgentForcesBotsCount</td>
+                            <td>Počet počítačem řízených hráčů v týmu Insurgent Forces</td>
+                            <td>0-16</td>
+                        </tr>
+                        <tr>
+                            <td>players</td>
+                            <td>Obaluje informace o hráčích a jejich nastavení</td>
+                            <td>Bez omezení (obal)</td>
+                        </tr>
+                        <tr>
+                            <td>player</td>
+                            <td>Obaluje informace o hráči a jeho nastavení</td>
+                            <td>Bez omezení (obal)</td>
+                        </tr>
+                        <tr>
+                            <td>status</td>
+                            <td>Obaluje informace o hráči</td>
+                            <td>Bez omezení (obal)</td>
+                        </tr>
+                        <tr>
+                            <td>ping</td>
+                            <td>Hodnota odezvy mezi serverem a klientem</td>
+                            <td>integer</td>
+                        </tr>
+                        <tr>
+                            <td>points</td>
+                            <td>Počet hráčových bodů</td>
+                            <td>integer</td>
+                        </tr>
+                        <tr>
+                            <td>deaths</td>
+                            <td>Počet kolikrát byl hráče zabit</td>
+                            <td>integer</td>
+                        </tr>
+                        <tr>
+                            <td>kills</td>
+                            <td>Počet kolikrát hráč zabil jiného</td>
+                            <td>integer</td>
+                        </tr>
+                        <tr>
+                            <td>gameSettings</td>
+                            <td>Obaluje nastavení hry</td>
+                            <td>Bez omezení (obal)</td>
+                        </tr>
+                        <tr>
+                            <td>console</td>
+                            <td>Nastavení povolení klientské konzole</td>
+                            <td>boolean</td>
+                        </tr>
+                        <tr>
+                            <td>gameplayHints</td>
+                            <td>Nastavení zobrazení nápovědy</td>
+                            <td>boolean</td>
+                        </tr>
+                        <tr>
+                            <td>videoSettings</td>
+                            <td>Obaluje nastavení zobrazení</td>
+                            <td>Bez omezení (obal)</td>
+                        </tr>
+                        <tr>
+                            <td>basicVideoSettings</td>
+                            <td>Obaluje základní nastavení zobrazení</td>
+                            <td>Bez omezení (obal)</td>
+                        </tr>
+                        <tr>
+                            <td>brightnes</td>
+                            <td>Nastavení jasu</td>
+                            <td>0-100</td>
+                        </tr>                      
+                        <tr>
+                            <td>resolution</td>
+                            <td>Nastavení rozlišení</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>fullscreen</td>
+                            <td>Nastavení zobrazení na celou obrazovku</td>
+                            <td>boolean</td>
+                        </tr>
+                        <tr>
+                            <td>fov</td>
+                            <td>Nastavení zorného pole</td>
+                            <td>80-110</td>
+                        </tr>                       
+                        <tr>
+                            <td>scopeDetail</td>
+                            <td>Nastavení úrovně detailu pro míření</td>
+                            <td>1-3</td>
+                        </tr>
+                        <tr>
+                            <td>lensFX</td>
+                            <td>Povolení odlesků od míření</td>
+                            <td>boolean</td>
+                        </tr>
+                        <tr>
+                            <td>advencedVideoSettings</td>
+                            <td>Obaluje pokročilé nastavení zobrazení</td>
+                            <td>Bez omezení (obal)</td>
+                        </tr>                        
+                        <tr>
+                            <td>globalShadowQuality</td>
+                            <td>Nastavení úrovně stínů</td>
+                            <td>1-3</td>
+                        </tr>
+                        <tr>
+                            <td>modelTextureDetail</td>
+                            <td>Nastavení úrovně textur modelů</td>
+                            <td>1-3</td>
+                        </tr>
+                        <tr>
+                            <td>shaderDetail</td>
+                            <td>Nastavení úrovně modelů</td>
+                            <td>1-3</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>efectsDetail</td>
+                            <td>Nastavení úrovně Efektu</td>
+                            <td>1-3</td>
+                        </tr>
+                        <tr>
+                            <td>multicoreRendering</td>
+                            <td>Povolení použtí více jader procesoru</td>
+                            <td>boolean</td>
+                        </tr>                       
+                        <tr>
+                            <td>antiAliasingMode</td>
+                            <td>Volba použitého anti-aliasing modu</td>
+                            <td>None;2X MSAA;4X MSAA;8X MSAA;18X MSAA</td>
+                        </tr>
+                        <tr>
+                            <td>filteringMode</td>
+                            <td>Volba použitého modu filtrování textur</td>
+                            <td>Bilinear;Trilinear;Anisotropic 2X;Anisotropic 4X;Anisotropic 8X;Anisotropic 16X</td>
+                        </tr>                        
+                        <tr>
+                            <td>fxaaAntiAliasing</td>
+                            <td>Povolení FXAA anti-aliasing</td>
+                            <td>boolean</td>
+                        </tr>
+                        <tr>
+                            <td>vsync</td>
+                            <td>Povolení vertilaní synchronizace</td>
+                            <td>boolean</td>
+                        </tr>                       
+                        <tr>
+                            <td>motionBlur</td>
+                            <td>Povolení rozmazaní pohybu</td>
+                            <td>boolean</td>
+                        </tr>
+                        <tr>
+                            <td>audioSettings</td>
+                            <td>Obaluje nastavení zvuku</td>
+                            <td>Bez omezení (obal)</td>
+                        </tr>                       
+                        <tr>
+                            <td>masterVolume</td>
+                            <td>Nastavení cekové hlastitosti</td>
+                            <td>1-100</td>
+                        </tr>
+                        <tr>
+                            <td>musicVolume</td>
+                            <td>Nastavení hlastitosti hudby</td>
+                            <td>1-100</td>
+                        </tr>                       
+                        <tr>
+                            <td>voiceVolume</td>
+                            <td>Nastavení hlastitosti hlasového chatu</td>
+                            <td>1-100</td>
+                        </tr>
+                        <tr>
+                            <td>soundQuality</td>
+                            <td>Nastavení kvality zvuku</td>
+                            <td>1-3</td>
+                        </tr>                        
+                        <tr>
+                            <td>closeCaption</td>
+                            <td>Povolení popisků pro sluchově postižené</td>
+                            <td>boolean</td>
+                        </tr>
+                        <tr>
+                            <td>enableVoice</td>
+                            <td>Povolení hlasového chatu</td>
+                            <td>boolean</td>
+                        </tr>                      
+                        <tr>
+                            <td>voiceRadioFilter</td>
+                            <td>Povolení filtru hlasového chatu simulujícího vysílačku</td>
+                            <td>boolean</td>
+                    </table>
+                    <h3>Použité atributy</h3>
+                    <table border="1" id="atributy" title="Tabulka atributů">
+                        <tr>
+                            <th>Název atributu</th>
+                            <th>Náležící k elementu</th>
+                            <th>Popis atributu</th>
+                            <th>Schématické omezení</th>
+                        </tr>
+                        <tr>
+                            <td>gameServerID</td>
+                            <td>gameServer</td>
+                            <td>ID dostupného game serveru</td>
+                            <td>integer</td>
+                        </tr>
+                        <tr>
+                            <td>friendlyName</td>
+                            <td>gameServer</td>
+                            <td>Označení dostupného game serveru pro jednoduší zprávu</td>
+                            <td>string</td>
+                        </tr>
+                        <tr>
+                            <td>location</td>
+                            <td>MOTDFile</td>
+                            <td>Cesta k souboru MOTD</td>
+                            <td>sting</td>
+                        </tr>
+                        <tr>
+                            <td>encoding</td>
+                            <td>MOTDFile</td>
+                            <td>Kodovani souboru MOTD</td>
+                            <td>string</td>
+                        </tr>
+                        <tr>
+                            <td>type</td>
+                            <td>MOTDFile</td>
+                            <td>DOCTYPE souboru MOTD</td>
+                            <td>string</td>
+                        </tr>
+                        <tr>
+                            <td>playerID</td>
+                            <td>player</td>
+                            <td>ID hráče</td>
+                            <td>string</td>
+                        </tr>
+                        <tr>
+                            <td>nickname</td>
+                            <td>player</td>
+                            <td>Přezdívka hráče</td>
+                            <td>string</td>
+                        </tr>
+                        <tr>
+                            <td>width</td>
+                            <td>resolution</td>
+                            <td>výška zobrazení</td>
+                            <td>integer</td>
+                        </tr>
+                        <tr>
+                            <td>height</td>
+                            <td>resolution</td>
+                            <td>šířka zobrazení</td>
+                            <td>integer</td>
+                        </tr>
+                    </table>
+                </article>
+            </section>
+            <section id="transformace">
+                <article>
+                    <header>
+                        <h2>Popis transformace</h2>
+                    </header>
+                    <p>Transformace pomocí dvou cyklů for-each se projdou hráčí pro všechny servery, vytovří se html tabulka s hráči seřazenými sestupně podle skore.</p>
+                </article>
+            </section>
+        </main>
+        <footer>
+            <p>Autor: <strong>Jakub Jan</strong></p>
+        </footer>
+    </body>
+</html>

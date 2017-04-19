@@ -1,0 +1,284 @@
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="qualified">
+    <xs:element name="config">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="gameServer" maxOccurs="10" minOccurs="1">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="serverSettings">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="generalSeverSettings">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element type="xs:string" name="hostname" />
+                                                    <xs:element name="port">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:integer">
+                                                                <xs:minInclusive value="1024" />
+                                                                <xs:maxInclusive value="65535" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element type="xs:string" name="name" />
+                                                    <xs:element name="MOTDFile">
+                                                        <xs:complexType>
+                                                            <xs:simpleContent>
+                                                                <xs:extension base="xs:string">
+                                                                    <xs:attribute type="xs:string" name="location" use="optional" />
+                                                                    <xs:attribute type="xs:string" name="encoding" use="optional" />
+                                                                    <xs:attribute type="xs:string" name="type" use="optional" />
+                                                                </xs:extension>
+                                                            </xs:simpleContent>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="serverRegion">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:string">
+                                                                <xs:enumeration value="World" />
+                                                                <xs:enumeration value="US" />
+                                                                <xs:enumeration value="Europe" />
+                                                                <xs:enumeration value="Asia" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element name="maxplayers">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:integer">
+                                                                <xs:minInclusive value="0" />
+                                                                <xs:maxInclusive value="64" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element type="xs:string" name="mapcycle" />
+                                                    <xs:element type="xs:integer" name="maxAllowedPing" />
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                        <xs:element name="botSettings">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="botDifficulty">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:integer">
+                                                                <xs:minInclusive value="0" />
+                                                                <xs:maxInclusive value="3" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element name="securityForcesBotsCount">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:integer">
+                                                                <xs:minInclusive value="0" />
+                                                                <xs:maxInclusive value="16" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                    <xs:element name="insurgentForcesBotsCount">
+                                                        <xs:simpleType>
+                                                            <xs:restriction base="xs:integer">
+                                                                <xs:minInclusive value="0" />
+                                                                <xs:maxInclusive value="16" />
+                                                            </xs:restriction>
+                                                        </xs:simpleType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="players">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="player" maxOccurs="64" minOccurs="0">
+                                            <xs:complexType>
+                                                <xs:sequence>
+                                                    <xs:element name="status">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element type="xs:integer" name="ping" />
+                                                                <xs:element type="xs:integer" name="points" />
+                                                                <xs:element type="xs:integer" name="deaths" />
+                                                                <xs:element type="xs:integer" name="kills" />
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="gameSettings">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element type="xs:boolean" name="console" />
+                                                                <xs:element type="xs:boolean" name="gameplayHints" />
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="videoSettings">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="basicVideoSettings">
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                            <xs:element name="brightnes">
+                                                                                <xs:simpleType>
+                                                                                    <xs:restriction base="xs:integer">
+                                                                                        <xs:minInclusive value="0" />
+                                                                                        <xs:maxInclusive value="100" />
+                                                                                    </xs:restriction>
+                                                                                </xs:simpleType>
+                                                                            </xs:element>
+                                                                            <xs:element name="resolution">
+                                                                                <xs:complexType>
+                                                                                    <xs:simpleContent>
+                                                                                        <xs:extension base="xs:string">
+                                                                                            <xs:attribute type="xs:integer" name="width" use="required" />
+                                                                                            <xs:attribute type="xs:integer" name="height" use="required" />
+                                                                                        </xs:extension>
+                                                                                    </xs:simpleContent>
+                                                                                </xs:complexType>
+                                                                            </xs:element>
+                                                                            <xs:element type="xs:boolean" name="fullscreen" />
+                                                                            <xs:element name="fov">
+                                                                                <xs:simpleType>
+                                                                                    <xs:restriction base="xs:integer">
+                                                                                        <xs:minInclusive value="80" />
+                                                                                        <xs:maxInclusive value="110" />
+                                                                                    </xs:restriction>
+                                                                                </xs:simpleType>
+                                                                            </xs:element>
+                                                                            <xs:element name="scopeDetail">
+                                                                                <xs:simpleType>
+                                                                                    <xs:restriction base="xs:integer">
+                                                                                        <xs:minInclusive value="1" />
+                                                                                        <xs:maxInclusive value="3" />
+                                                                                    </xs:restriction>
+                                                                                </xs:simpleType>
+                                                                            </xs:element>
+                                                                            <xs:element type="xs:boolean" name="lensFX" />
+                                                                        </xs:sequence>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                                <xs:element name="advencedVideoSettings">
+                                                                    <xs:complexType>
+                                                                        <xs:sequence>
+                                                                            <xs:element name="globalShadowQuality">
+                                                                                <xs:simpleType>
+                                                                                    <xs:restriction base="xs:integer">
+                                                                                        <xs:minInclusive value="1" />
+                                                                                        <xs:maxInclusive value="3" />
+                                                                                    </xs:restriction>
+                                                                                </xs:simpleType>
+                                                                            </xs:element>
+                                                                            <xs:element name="modelTextureDetail">
+                                                                                <xs:simpleType>
+                                                                                    <xs:restriction base="xs:integer">
+                                                                                        <xs:minInclusive value="1" />
+                                                                                        <xs:maxInclusive value="3" />
+                                                                                    </xs:restriction>
+                                                                                </xs:simpleType>
+                                                                            </xs:element>
+                                                                            <xs:element name="shaderDetail">
+                                                                                <xs:simpleType>
+                                                                                    <xs:restriction base="xs:integer">
+                                                                                        <xs:minInclusive value="1" />
+                                                                                        <xs:maxInclusive value="3" />
+                                                                                    </xs:restriction>
+                                                                                </xs:simpleType>
+                                                                            </xs:element>
+                                                                            <xs:element name="efectsDetail">
+                                                                                <xs:simpleType>
+                                                                                    <xs:restriction base="xs:integer">
+                                                                                        <xs:minInclusive value="1" />
+                                                                                        <xs:maxInclusive value="3" />
+                                                                                    </xs:restriction>
+                                                                                </xs:simpleType>
+                                                                            </xs:element>
+                                                                            <xs:element type="xs:boolean" name="multicoreRendering" />
+                                                                            <xs:element name="antiAliasingMode">
+                                                                                <xs:simpleType>
+                                                                                    <xs:restriction base="xs:string">
+                                                                                        <xs:enumeration value="None" />
+                                                                                        <xs:enumeration value="2X MSAA" />
+                                                                                        <xs:enumeration value="4X MSAA" />
+                                                                                        <xs:enumeration value="8X MSAA" />
+                                                                                    </xs:restriction>
+                                                                                </xs:simpleType>
+                                                                            </xs:element>
+                                                                            <xs:element name="filteringMode">
+                                                                                <xs:simpleType>
+                                                                                    <xs:restriction base="xs:string">
+                                                                                        <xs:enumeration value="Bilinear" />
+                                                                                        <xs:enumeration value="Trilinear" />
+                                                                                        <xs:enumeration value="Anisotropic 2X" />
+                                                                                        <xs:enumeration value="Anisotropic 4X" />
+                                                                                        <xs:enumeration value="Anisotropic 8X" />
+                                                                                        <xs:enumeration value="Anisotropic 16X" />
+                                                                                    </xs:restriction>
+                                                                                </xs:simpleType>
+                                                                            </xs:element>
+                                                                            <xs:element type="xs:boolean" name="fxaaAntiAliasing" />
+                                                                            <xs:element type="xs:boolean" name="vsync" />
+                                                                            <xs:element type="xs:boolean" name="motionBlur" />
+                                                                        </xs:sequence>
+                                                                    </xs:complexType>
+                                                                </xs:element>
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                    <xs:element name="audioSettings">
+                                                        <xs:complexType>
+                                                            <xs:sequence>
+                                                                <xs:element name="masterVolume">
+                                                                    <xs:simpleType>
+                                                                        <xs:restriction base="xs:integer">
+                                                                            <xs:minInclusive value="0" />
+                                                                            <xs:maxInclusive value="100" />
+                                                                        </xs:restriction>
+                                                                    </xs:simpleType>
+                                                                </xs:element>
+                                                                <xs:element name="musicVolume">
+                                                                    <xs:simpleType>
+                                                                        <xs:restriction base="xs:integer">
+                                                                            <xs:minInclusive value="0" />
+                                                                            <xs:maxInclusive value="100" />
+                                                                        </xs:restriction>
+                                                                    </xs:simpleType>
+                                                                </xs:element>
+                                                                <xs:element name="voiceVolume">
+                                                                    <xs:simpleType>
+                                                                        <xs:restriction base="xs:integer">
+                                                                            <xs:minInclusive value="0" />
+                                                                            <xs:maxInclusive value="100" />
+                                                                        </xs:restriction>
+                                                                    </xs:simpleType>
+                                                                </xs:element>
+                                                                <xs:element name="soundQuality">
+                                                                    <xs:simpleType>
+                                                                        <xs:restriction base="xs:integer">
+                                                                            <xs:minInclusive value="1" />
+                                                                            <xs:maxInclusive value="3" />
+                                                                        </xs:restriction>
+                                                                    </xs:simpleType>
+                                                                </xs:element>
+                                                                <xs:element type="xs:boolean" name="closeCaption" />
+                                                                <xs:element type="xs:boolean" name="enableVoice" />
+                                                                <xs:element type="xs:boolean" name="voiceRadioFilter" />
+                                                            </xs:sequence>
+                                                        </xs:complexType>
+                                                    </xs:element>
+                                                </xs:sequence>
+                                                <xs:attribute type="xs:string" name="playerID" use="required" />
+                                                <xs:attribute type="xs:string" name="nickname" use="required" />
+                                            </xs:complexType>
+                                        </xs:element>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                        <xs:attribute type="xs:byte" name="gameServerID" use="required" />
+                        <xs:attribute type="xs:string" name="friendlyName" use="required" />
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>
